@@ -1,3 +1,10 @@
+buildscript {
+    ext {
+        springVersion = '5.2.0.RELEASE'
+        lombokVersion = '1.18.12'
+    }
+}
+
 plugins {
     id 'java'
 }
@@ -10,6 +17,15 @@ repositories {
 }
 
 dependencies {
+    // spring
+    implementation group: 'org.springframework', name: 'spring-context', version: springVersion
+
+    // lombok
+    implementation group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    testImplementation group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 }
