@@ -1,6 +1,7 @@
 package com.spring.preparation;
 
 import com.spring.preparation.config.ApplicationProperties;
+import com.spring.preparation.config.SpelConfig;
 import com.spring.preparation.controller.EmployeesController;
 import com.spring.preparation.service.EmployeesService;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +14,7 @@ public class Demo {
 
     public void run() {
         System.out.println("Application is running");
-        qualifierDemo();
+        spelDemo();
     }
 
     private void containerDemo() {
@@ -39,5 +40,17 @@ public class Demo {
         final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Demo.class);
         final EmployeesController employeesController = (EmployeesController) applicationContext.getBean("employeesController");
         System.out.println(employeesController.getAllEmployees());
+    }
+
+    private void spelDemo() {
+        final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Demo.class);
+        final SpelConfig spelConfig = (SpelConfig) applicationContext.getBean("spelConfig");
+        System.out.println(spelConfig.arithmeticOperation);
+        System.out.println(spelConfig.arithmeticOperationWithStrings);
+        System.out.println(spelConfig.arithmeticOperationDiv);
+        System.out.println(spelConfig.logicalOperation);
+        System.out.println(spelConfig.logicalOperation2);
+        System.out.println(spelConfig.conditionalOperation);
+        System.out.println(spelConfig.matchesOperation);
     }
 }

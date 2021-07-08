@@ -18,9 +18,11 @@ com/spring/preparation/config/BeanLifecycleConfig.java
  com.spring.preparation.config.BeanLifecycleConfig
 com/spring/preparation/config/ApplicationProperties.java
  com.spring.preparation.config.ApplicationProperties
-com/spring/preparation/Application.java
- com.spring.preparation.Application
 com/spring/preparation/controller/EmployeesController.java
  com.spring.preparation.controller.EmployeesController
+com/spring/preparation/Application.java
+ com.spring.preparation.Application
+com/spring/preparation/config/SpelConfig.java
+ com.spring.preparation.config.SpelConfig
 com/spring/preparation/Demo.java
  com.spring.preparation.Demo
