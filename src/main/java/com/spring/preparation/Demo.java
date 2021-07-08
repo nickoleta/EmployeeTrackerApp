@@ -10,12 +10,17 @@ public class Demo {
 
     public void run() {
         System.out.println("Application is running");
-        containerDemo();
+        beanLifecycleDemo();
     }
 
-    public void containerDemo() {
+    private void containerDemo() {
         final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Demo.class);
         final EmployeesService employeesService = (EmployeesService) applicationContext.getBean("employeesServiceImpl");
         System.out.println(employeesService.getAllEmployees());
+    }
+
+    private void beanLifecycleDemo() {
+        final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Demo.class);
+        applicationContext.getBean("beanLifecycle");
     }
 }
