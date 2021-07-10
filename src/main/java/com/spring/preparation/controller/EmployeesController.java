@@ -1,5 +1,6 @@
 package com.spring.preparation.controller;
 
+import com.spring.preparation.aop.aspects.Loggable;
 import com.spring.preparation.dto.Employee;
 import com.spring.preparation.service.EmployeesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class EmployeesController {
         this.employeesService = employeesService;
     }
 
+    @Loggable
     public Collection<Employee> getAllEmployees() {
         return employeesService.getAllEmployees();
     }

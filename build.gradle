@@ -21,6 +21,8 @@ dependencies {
 
     // spring
     implementation group: 'org.springframework', name: 'spring-context', version: springVersion
+    implementation group: 'org.springframework', name: 'spring-aop', version: springVersion
+    implementation group: 'org.springframework', name: 'spring-aspects', version: springVersion
 
     // lombok
     implementation group: 'org.projectlombok', name: 'lombok', version: lombokVersion

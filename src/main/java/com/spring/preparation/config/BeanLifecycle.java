@@ -3,10 +3,14 @@ package com.spring.preparation.config;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+@Component
+@Profile("dev")
 public class BeanLifecycle implements BeanNameAware, BeanFactoryAware, BeanPostProcessor, InitializingBean, DisposableBean {
 
     /** Bean Creation Phases: */
