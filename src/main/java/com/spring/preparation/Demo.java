@@ -4,8 +4,10 @@ import com.spring.preparation.aop.aspects.custom.TracingAdvice;
 import com.spring.preparation.config.ApplicationProperties;
 import com.spring.preparation.config.SpelConfig;
 import com.spring.preparation.controller.EmployeesController;
+import com.spring.preparation.dao.DepartmentsDao;
 import com.spring.preparation.dao.EmployeesDao;
 import com.spring.preparation.dao.impl.EmployeesDaoImpl;
+import com.spring.preparation.dto.Employee;
 import com.spring.preparation.service.EmployeesService;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.context.ApplicationContext;
@@ -22,7 +24,7 @@ public class Demo {
 
     public void run() {
         System.out.println("Application is running");
-        aopCustomAdviceDemo();
+        namedParametersJdbcTemplateDemo();
     }
 
     private void containerDemo() {
@@ -87,5 +89,22 @@ public class Demo {
 
         final EmployeesDao proxy = (EmployeesDao) proxyFactory.getProxy();
         System.out.println(proxy.getAllEmployees());
+    }
+
+    private void jdbcTemplateDemo() {
+        final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Demo.class);
+        final EmployeesDao employeesDao = (EmployeesDao) applicationContext.getBean("employeesDaoImpl");
+        System.out.println("All employees: " + employeesDao.getAllEmployees());
+        System.out.println("Adding new employee: " + employeesDao.addEmployee(new Employee("Stanley", "SENIOR")));
+        System.out.println("Getting new employee: " + employeesDao.getEmployeeByName("Stanley"));
+        System.out.println("Changing employee's position: " + employeesDao.updateEmployeePosition("Stanley", "DIRECTOR"));
+        System.out.println("All employees: " + employeesDao.getAllEmployees());
+    }
+
+    private void namedParametersJdbcTemplateDemo() {
+        final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Demo.class);
+        final DepartmentsDao departmentsDao = (DepartmentsDao) applicationContext.getBean("departmentsDaoImpl");
+        System.out.println("Get department's director by name: " + departmentsDao.getDepartmentDirector("HR"));
+        System.out.println("Get department by name: " + departmentsDao.getDepartmentByDepartmentName("CMBU"));
     }
 }

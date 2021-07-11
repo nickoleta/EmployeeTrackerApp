@@ -15,6 +15,7 @@ public class H2DbConfig {
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
                 .addScript("classpath:database/employees-schema.sql")
+                .addScript("classpath:database/departments-schema.sql")
                 .build();
     }
 }

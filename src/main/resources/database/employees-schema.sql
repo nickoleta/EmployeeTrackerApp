@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS employees;
 
 CREATE TABLE employees (
     employee_name VARCHAR(100) NOT NULL,
-    employee_position VARCHAR(100) NOT NULL,
+    employee_position VARCHAR(500) NOT NULL,
 );
 
 INSERT INTO employees (employee_name, employee_position) VALUES
@@ -14,4 +14,7 @@ INSERT INTO employees (employee_name, employee_position) VALUES
     ('Diana', 'SENIOR'),
     ('Jack', 'SENIOR'),
     ('John', 'PROJECT_MANAGER'),
-    ('Andy', 'CEO');
+    ('Andy', 'CEO'),
+    ('Jake', 'DIRECTOR'),
+    ('Jason', 'DIRECTOR'),
+    ('Jane', 'DIRECTOR');

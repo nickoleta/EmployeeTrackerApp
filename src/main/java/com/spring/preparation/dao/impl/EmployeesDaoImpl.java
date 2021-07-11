@@ -21,7 +21,22 @@ public class EmployeesDaoImpl implements EmployeesDao {
     }
 
     @Override
+    public Employee getEmployeeByName(String name) {
+        return jdbcTemplate.queryForObject("SELECT * FROM employees WHERE employee_name = ?", new Object[]{ name }, new EmployeeRowMapper());
+    }
+
+    @Override
     public Collection<Employee> getAllEmployees() {
         return jdbcTemplate.query("SELECT * FROM employees", new EmployeeRowMapper());
+    }
+
+    @Override
+    public int addEmployee(Employee employee) {
+        return jdbcTemplate.update("INSERT INTO employees VALUES (?, ?)", employee.getName(), employee.getPosition());
+    }
+
+    @Override
+    public int updateEmployeePosition(String name, String position) {
+        return jdbcTemplate.update("UPDATE employees SET employee_position = ? WHERE employee_name = ?", position, name);
     }
 }

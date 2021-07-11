@@ -2,7 +2,6 @@ package com.spring.preparation.service.impl;
 
 import com.spring.preparation.dao.EmployeesDao;
 import com.spring.preparation.dto.Employee;
-import com.spring.preparation.dto.Position;
 import com.spring.preparation.service.EmployeesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ public class TraineesServiceIml implements EmployeesService {
     @Override
     public Collection<Employee> getAllEmployees() {
         return employeesDao.getAllEmployees().stream()
-                .filter(employee -> employee.getPosition() == Position.TRAINEE)
+                .filter(employee -> employee.getPosition().equals("TRAINEE"))
                 .collect(Collectors.toList());
     }
 }
