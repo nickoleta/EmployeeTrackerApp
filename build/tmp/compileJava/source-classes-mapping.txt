@@ -18,12 +18,12 @@ com/spring/preparation/aop/aspects/Loggable.java
  com.spring.preparation.aop.aspects.Loggable
 com/spring/preparation/config/BeanLifecycleConfig.java
  com.spring.preparation.config.BeanLifecycleConfig
+com/spring/preparation/dao/exception/translator/CustomExceptionTranslator.java
+ com.spring.preparation.dao.exception.translator.CustomExceptionTranslator
+com/spring/preparation/dao/impl/DepartmentsDaoImpl.java
+ com.spring.preparation.dao.impl.DepartmentsDaoImpl
 com/spring/preparation/service/impl/EmployeesServiceImpl.java
  com.spring.preparation.service.impl.EmployeesServiceImpl
-com/spring/preparation/dao/impl/EmployeesDaoImpl.java
- com.spring.preparation.dao.impl.EmployeesDaoImpl
-com/spring/preparation/service/impl/TraineesServiceIml.java
- com.spring.preparation.service.impl.TraineesServiceIml
 com/spring/preparation/dao/EmployeesDao.java
  com.spring.preparation.dao.EmployeesDao
 com/spring/preparation/dto/Employee.java
@@ -34,11 +34,15 @@ com/spring/preparation/dto/Department.java
  com.spring.preparation.dto.Department
 com/spring/preparation/dao/DepartmentsDao.java
  com.spring.preparation.dao.DepartmentsDao
-com/spring/preparation/Application.java
- com.spring.preparation.Application
-com/spring/preparation/Demo.java
- com.spring.preparation.Demo
 com/spring/preparation/dao/mapper/DepartmentRowMapper.java
  com.spring.preparation.dao.mapper.DepartmentRowMapper
-com/spring/preparation/dao/impl/DepartmentsDaoImpl.java
- com.spring.preparation.dao.impl.DepartmentsDaoImpl
+com/spring/preparation/dao/impl/EmployeesDaoImpl.java
+ com.spring.preparation.dao.impl.EmployeesDaoImpl
+com/spring/preparation/Application.java
+ com.spring.preparation.Application
+com/spring/preparation/service/impl/TraineesServiceIml.java
+ com.spring.preparation.service.impl.TraineesServiceIml
+com/spring/preparation/Demo.java
+ com.spring.preparation.Demo
+com/spring/preparation/dao/impl/TraineesDaoImpl.java
+ com.spring.preparation.dao.impl.TraineesDaoImpl

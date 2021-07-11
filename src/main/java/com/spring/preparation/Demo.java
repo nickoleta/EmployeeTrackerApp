@@ -24,7 +24,7 @@ public class Demo {
 
     public void run() {
         System.out.println("Application is running");
-        namedParametersJdbcTemplateDemo();
+        simpleJdbcInsertDemo();
     }
 
     private void containerDemo() {
@@ -106,5 +106,13 @@ public class Demo {
         final DepartmentsDao departmentsDao = (DepartmentsDao) applicationContext.getBean("departmentsDaoImpl");
         System.out.println("Get department's director by name: " + departmentsDao.getDepartmentDirector("HR"));
         System.out.println("Get department by name: " + departmentsDao.getDepartmentByDepartmentName("CMBU"));
+    }
+
+    private void simpleJdbcInsertDemo() {
+        final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Demo.class);
+        final EmployeesDao traineesDao = (EmployeesDao) applicationContext.getBean("traineesDaoImpl");
+        traineesDao.addEmployee(new Employee("Cathrine", "TRAINEE"));
+        System.out.println("All trainees: " + traineesDao.getAllEmployees());
+        System.out.println("Trainee by name: " + traineesDao.getEmployeeByName("Cathrine"));
     }
 }

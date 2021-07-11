@@ -4,6 +4,7 @@ import com.spring.preparation.dao.EmployeesDao;
 import com.spring.preparation.dto.Employee;
 import com.spring.preparation.service.EmployeesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -14,7 +15,7 @@ public class EmployeesServiceImpl implements EmployeesService {
     private final EmployeesDao employeesDao;
 
     @Autowired
-    public EmployeesServiceImpl(EmployeesDao employeesDao) {
+    public EmployeesServiceImpl(@Qualifier("employeesDaoImpl") EmployeesDao employeesDao) {
         this.employeesDao = employeesDao;
     }
 
