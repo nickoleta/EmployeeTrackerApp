@@ -14,6 +14,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.env.Environment;
 
+import javax.sql.DataSource;
+
 @ComponentScan
 @EnableAspectJAutoProxy
 public class Demo {
@@ -76,7 +78,10 @@ public class Demo {
     }
 
     private void aopCustomAdviceDemo() {
-        final ProxyFactory proxyFactory = new ProxyFactory(new EmployeesDaoImpl());
+        final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Demo.class);
+        final DataSource dataSource = (DataSource) applicationContext.getBean("dataSource");
+
+        final ProxyFactory proxyFactory = new ProxyFactory(new EmployeesDaoImpl(dataSource));
         proxyFactory.addInterface(EmployeesDao.class);
         proxyFactory.addAdvice(new TracingAdvice());
 
