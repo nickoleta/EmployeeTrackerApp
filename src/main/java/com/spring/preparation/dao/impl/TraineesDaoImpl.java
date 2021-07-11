@@ -7,10 +7,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Repository("traineesDaoImpl")
 public class TraineesDaoImpl implements EmployeesDao {
@@ -30,6 +27,11 @@ public class TraineesDaoImpl implements EmployeesDao {
     @Override
     public Collection<Employee> getAllEmployees() {
         throw new UnsupportedOperationException("Not implemented functionality!");
+    }
+
+    @Override
+    public int[] addEmployees(List<Employee> employees) {
+        return new int[0];
     }
 
     @Override

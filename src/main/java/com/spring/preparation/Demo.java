@@ -7,6 +7,7 @@ import com.spring.preparation.controller.EmployeesController;
 import com.spring.preparation.dao.DepartmentsDao;
 import com.spring.preparation.dao.EmployeesDao;
 import com.spring.preparation.dao.impl.EmployeesDaoImpl;
+import com.spring.preparation.dto.Department;
 import com.spring.preparation.dto.Employee;
 import com.spring.preparation.service.EmployeesService;
 import org.springframework.aop.framework.ProxyFactory;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 @ComponentScan
 @EnableAspectJAutoProxy
@@ -24,7 +26,7 @@ public class Demo {
 
     public void run() {
         System.out.println("Application is running");
-        simpleJdbcInsertDemo();
+        batchUpdateDemo();
     }
 
     private void containerDemo() {
@@ -114,5 +116,22 @@ public class Demo {
         traineesDao.addEmployee(new Employee("Cathrine", "TRAINEE"));
         System.out.println("All trainees: " + traineesDao.getAllEmployees());
         System.out.println("Trainee by name: " + traineesDao.getEmployeeByName("Cathrine"));
+    }
+
+    private void batchUpdateDemo() {
+        final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Demo.class);
+        final EmployeesDao employeesDao = (EmployeesDao) applicationContext.getBean("employeesDaoImpl");
+        employeesDao.addEmployees(List.of(
+                new Employee("Susan", "PROJECT_MANAGER"),
+                new Employee("Nadya", "MID")));
+
+        System.out.println("All employees: " + employeesDao.getAllEmployees());
+
+        final DepartmentsDao departmentsDao = (DepartmentsDao) applicationContext.getBean("departmentsDaoImpl");
+        departmentsDao.addAllDepartments(List.of(
+                new Department("GSS", "Hristo"),
+                new Department("CB", "Georgi")));
+
+        System.out.println("All employees: " + departmentsDao.getAllDepartments());
     }
 }

@@ -7,9 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.Collection;
+import java.util.List;
 
 @Repository
 public class DepartmentsDaoImpl implements DepartmentsDao {
@@ -19,6 +22,11 @@ public class DepartmentsDaoImpl implements DepartmentsDao {
     @Autowired
     public DepartmentsDaoImpl(DataSource dataSource) {
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+    }
+
+    @Override
+    public Collection<Department> getAllDepartments() {
+        return namedParameterJdbcTemplate.query("SELECT * FROM departments", new DepartmentRowMapper());
     }
 
     @Override
@@ -33,5 +41,11 @@ public class DepartmentsDaoImpl implements DepartmentsDao {
         SqlParameterSource namedParams = new MapSqlParameterSource().addValue("dep_name", departmentName);
         return namedParameterJdbcTemplate.queryForObject("SELECT * FROM departments WHERE department_name=:dep_name",
                 namedParams, new DepartmentRowMapper());
+    }
+
+    @Override
+    public int[] addAllDepartments(List<Department> departments) {
+        final SqlParameterSource[] batch = SqlParameterSourceUtils.createBatch(departments.toArray());
+        return namedParameterJdbcTemplate.batchUpdate("INSERT INTO departments VALUES (:name, :director)", batch);
     }
 }
