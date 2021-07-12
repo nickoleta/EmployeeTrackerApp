@@ -23,4 +23,14 @@ public class EmployeesServiceImpl implements EmployeesService {
     public Collection<Employee> getAllEmployees() {
         return employeesDao.getAllEmployees();
     }
+
+    @Override
+    public Employee getEmployee(String name) {
+        return employeesDao.getEmployeeByName(name);
+    }
+
+    @Override
+    public void addEmployee(Employee employee) {
+        employeesDao.addEmployee(employee);
+    }
 }

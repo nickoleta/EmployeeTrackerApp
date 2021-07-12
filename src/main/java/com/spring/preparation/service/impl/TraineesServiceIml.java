@@ -23,4 +23,14 @@ public class TraineesServiceIml implements EmployeesService {
     public Collection<Employee> getAllEmployees() {
         return employeesDao.getAllEmployees();
     }
+
+    @Override
+    public void addEmployee(Employee employee) {
+        employeesDao.addEmployee(employee);
+    }
+
+    @Override
+    public Employee getEmployee(String name) {
+        throw new UnsupportedOperationException("Not implemented functionality!");
+    }
 }

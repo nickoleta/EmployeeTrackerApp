@@ -5,11 +5,12 @@ import com.spring.preparation.dto.Employee;
 import com.spring.preparation.service.EmployeesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-@Controller
+@RestController
+@RequestMapping("employees")
 public class EmployeesController {
 
     private final EmployeesService employeesService;
@@ -20,7 +21,18 @@ public class EmployeesController {
     }
 
     @Loggable
+    @GetMapping()
     public Collection<Employee> getAllEmployees() {
         return employeesService.getAllEmployees();
+    }
+
+    @GetMapping("/{employeeName}")
+    public Employee getEmployee(@PathVariable("employeeName") final String employeeName) {
+        return employeesService.getEmployee(employeeName);
+    }
+
+    @PostMapping("")
+    public Employee addEmployee(@RequestBody final Employee employee) {
+        return employeesService.addEmployee(employee);
     }
 }
