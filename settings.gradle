@@ -1,2 +1,4 @@
 rootProject.name = 'EmployeeTrackerApp'
+include 'EmployeeTrackerAppSpringBoot'
+include 'EmployeeTrackerAppSpring'
 

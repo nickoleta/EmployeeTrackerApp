@@ -9,6 +9,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/EmployeeTrackerAppSpring" />
+            <option value="$PROJECT_DIR$/EmployeeTrackerAppSpringBoot" />
           </set>
         </option>
       </GradleProjectSettings>
