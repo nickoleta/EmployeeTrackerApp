@@ -18,7 +18,7 @@ public class EmployeesController {
         this.employeesService = employeesService;
     }
 
-    @GetMapping()
+    @GetMapping
     public Collection<Employee> getAllEmployees() {
         return employeesService.getAllEmployees();
     }
@@ -28,7 +28,7 @@ public class EmployeesController {
         return employeesService.getEmployee(employeeName);
     }
 
-    @PostMapping("")
+    @PostMapping
     public void addEmployee(@RequestBody final Employee employee) {
         employeesService.addEmployee(employee);
     }
