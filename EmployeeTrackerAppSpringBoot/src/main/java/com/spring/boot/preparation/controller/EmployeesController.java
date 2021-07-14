@@ -3,6 +3,8 @@ package com.spring.boot.preparation.controller;
 import com.spring.boot.preparation.dto.Employee;
 import com.spring.boot.preparation.service.EmployeesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -24,8 +26,12 @@ public class EmployeesController {
     }
 
     @GetMapping("/{employeeName}")
-    public Employee getEmployee(@PathVariable("employeeName") final String employeeName) {
-        return employeesService.getEmployee(employeeName);
+    public ResponseEntity<Employee> getEmployee(@PathVariable("employeeName") final String employeeName) {
+        final Employee employee = employeesService.getEmployee(employeeName);
+        if(employee == null) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
     @PostMapping
