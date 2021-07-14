@@ -7,22 +7,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
 
 @Service
 public class EmployeesServiceImpl implements EmployeesService {
 
-    private final EmployeesRepository employeesRepository;
+    private EmployeesRepository employeesRepository;
+
+    public EmployeesServiceImpl() {
+    }
 
     @Autowired
     public EmployeesServiceImpl(EmployeesRepository employeesRepository) {
         this.employeesRepository = employeesRepository;
     }
 
+    @Autowired
+    public void setEmployeesRepository(EmployeesRepository employeesRepository) {
+        this.employeesRepository = employeesRepository;
+    }
+
     @Override
     public Collection<Employee> getAllEmployees() {
-        List<Employee> all = employeesRepository.findAll();
-        return all;
+        return employeesRepository.findAll();
     }
 
     @Override
