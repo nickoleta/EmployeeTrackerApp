@@ -1,0 +1,8 @@
+account:
+  username: yeah
+
+spring:
+  security:
+    user:
+      name: admin
+      password: pass
